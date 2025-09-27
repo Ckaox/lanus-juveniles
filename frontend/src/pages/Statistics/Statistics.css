@@ -1,0 +1,602 @@
+.statistics-page {
+  min-height: calc(100vh - 140px);
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.back-link {
+  color: #800000;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #a00000;
+}
+
+/* Navigation Cards */
+.stats-navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stats-nav-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.stats-nav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  color: #333;
+}
+
+.nav-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.stats-nav-card h3 {
+  color: #800000;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.stats-nav-card p {
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Overview Grid */
+.stats-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.stats-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header h2 {
+  color: #800000;
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-all-link {
+  color: #800000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.view-all-link:hover {
+  color: #a00000;
+}
+
+/* Stats List */
+.stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.position {
+  background: #800000;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.player-team {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #800000;
+  font-size: 1rem;
+}
+
+/* Filters */
+.filters-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Category Filter */
+.category-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-btn {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+  border-color: #800000;
+  color: #800000;
+}
+
+.category-btn.active {
+  background: #800000;
+  border-color: #800000;
+  color: white;
+}
+
+/* Stats Table */
+.stats-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.stats-table {
+  width: 100%;
+  margin: 0;
+}
+
+.stats-table th {
+  background: #800000;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  padding: 1rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.stats-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.stats-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+/* Table Cell Styles */
+.position-cell {
+  font-weight: bold;
+  color: #800000;
+  width: 60px;
+}
+
+.player-cell {
+  text-align: left !important;
+  min-width: 200px;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.player-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.jersey-number {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: normal;
+}
+
+.team-cell {
+  text-align: left !important;
+  min-width: 150px;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.team-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.team-category {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.team-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.team-link:hover {
+  color: #800000;
+}
+
+.goals-cell {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.assists-cell {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.yellow-cards-cell {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.red-cards-cell {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.wins-cell {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.draws-cell {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.losses-cell {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.goals-for-cell {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.goals-against-cell {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.goal-diff-cell {
+  font-weight: bold;
+}
+
+.goal-diff-cell.positive {
+  color: #28a745;
+}
+
+.goal-diff-cell.negative {
+  color: #dc3545;
+}
+
+.points-cell {
+  color: #800000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.percentage-cell {
+  color: #666;
+  font-weight: 600;
+}
+
+/* Top Scorers Grid */
+.scorers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.scorer-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.scorer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.scorer-position {
+  background: #800000;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.scorer-info {
+  flex: 1;
+}
+
+.scorer-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.scorer-team {
+  color: #666;
+  margin: 0 0 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.scorer-position-text {
+  color: #800000;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.scorer-stats {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.goals-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #800000;
+  line-height: 1;
+}
+
+.goals-label {
+  color: #666;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.assists-info,
+.matches-info {
+  color: #666;
+  font-size: 0.8rem;
+  margin: 0.25rem 0;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-overview-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .stats-table {
+    font-size: 0.8rem;
+  }
+  
+  .stats-table th,
+  .stats-table td {
+    padding: 0.75rem 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .stats-navigation {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-filter {
+    justify-content: flex-start;
+  }
+  
+  .category-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .stats-table-container {
+    overflow-x: auto;
+  }
+  
+  .stats-table {
+    min-width: 800px;
+  }
+  
+  .scorers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scorer-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .scorer-stats {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  .stats-section {
+    padding: 1rem;
+  }
+  
+  .filters-section {
+    padding: 1rem;
+  }
+  
+  .stats-nav-card {
+    padding: 1.5rem;
+  }
+  
+  .scorer-card {
+    padding: 1rem;
+  }
+  
+  .stat-item {
+    padding: 0.75rem;
+  }
+  
+  .player-info,
+  .team-info {
+    gap: 0.1rem;
+  }
+  
+  .stats-table th,
+  .stats-table td {
+    padding: 0.5rem 0.1rem;
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  header {
+    font-size: 1.1rem;
+    padding: 0.7rem;
+  }
+  main {
+    padding: 0.5rem;
+  }
+}
