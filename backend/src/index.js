@@ -26,19 +26,33 @@ const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/lanus-juveniles';
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Conexión a MongoDB
-mongoose.connect(MONGO_URI, { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-})
-  .then(() => {
+// Conexión a MongoDB con mejor manejo de errores
+const connectDB = async () => {
+  try {
+    if (!MONGO_URI) {
+      throw new Error('MONGO_URI no está definida en las variables de entorno');
+    }
+    
+    await mongoose.connect(MONGO_URI, { 
+      useNewUrlParser: true, 
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Timeout después de 5s en lugar de 30s
+      socketTimeoutMS: 45000, // Cerrar sockets después de 45s de inactividad
+    });
+    
     console.log('✅ MongoDB conectado exitosamente');
-    console.log(`📊 Base de datos: ${MONGO_URI}`);
-  })
-  .catch(err => {
-    console.error('❌ Error conectando a MongoDB:', err);
-    process.exit(1);
-  });
+    console.log(`📊 Base de datos conectada`);
+  } catch (err) {
+    console.error('❌ Error conectando a MongoDB:', err.message);
+    // No salir del proceso en producción, solo logear el error
+    if (NODE_ENV !== 'production') {
+      process.exit(1);
+    }
+  }
+};
+
+// Conectar a la base de datos
+connectDB();
 
 // Rutas
 app.get('/', (req, res) => {
@@ -60,10 +74,23 @@ app.get('/', (req, res) => {
 
 // Health check para Vercel
 app.get('/health', (req, res) => {
+  const dbStatus = mongoose.connection.readyState;
+  const dbStates = {
+    0: 'disconnected',
+    1: 'connected',
+    2: 'connecting',
+    3: 'disconnecting'
+  };
+
   res.json({
-    status: 'OK',
+    status: dbStatus === 1 ? 'OK' : 'ERROR',
     timestamp: new Date().toISOString(),
-    environment: NODE_ENV
+    environment: NODE_ENV,
+    database: {
+      status: dbStates[dbStatus],
+      readyState: dbStatus
+    },
+    mongodb_uri_configured: !!MONGO_URI
   });
 });
 
